@@ -10,16 +10,19 @@ import Area from './components/Area';
 
 function ListRender(props) {
   const data = props.data;
+
   const listItems = data.map((poda, index) => (
     <Area onPress={() => props.onPress(index)} poda={poda} key={index} />
   ));
+
   return (
-    <div
+    <div id="listContainer"
       style={{
         flexWrap: 'wrap',
         display: 'flex',
         justifyContent: 'space-between',
         marginTop: 32
+
       }}
     >
       {listItems}
@@ -34,14 +37,44 @@ export default class App extends React.Component {
       inFocus: null,
       results: {}
     };
+
+    
   }
 
   async componentDidMount() {
     const resultado = await getPodas();
     this.setState({ results: resultado });
+    
+    const container=  document.getElementById("listContainer");
+
+    
+    const podaItem = document.getElementsByClassName("podaItem")
+
+
+    let style = window.getComputedStyle(document.getElementsByClassName('podaItem')[0]);
+
+
+    const gridMargin = this.getMargin(container.offsetWidth,  80,16)
+
+    container.style.paddingLeft= gridMargin + "px"
+
+
   }
 
+  getMargin(containerWidth, itemWidth, margin){
+    
+    
+
+    
+    return (containerWidth %itemWidth) + margin/2
+  }
+
+
+  
   render() {
+
+    
+    
     return (
       <div className="App">
         <div
@@ -86,10 +119,12 @@ export default class App extends React.Component {
                 )}
               </ActionArea>
               {this.state.results.data ? (
+
                 <ListRender
                   onPress={index => this.setState({ inFocus: index + 1 })}
                   data={this.state.results.data}
                 />
+
               ) : null}
             </CardContent>
           </Card>

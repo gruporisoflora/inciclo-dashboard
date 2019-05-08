@@ -4,7 +4,9 @@ import Button from '@material-ui/core/Button';
 export default class Area extends React.Component {
   render() {
     return (
+
       <Button
+
         style={{
           width: 80,
           height: 80,
@@ -14,7 +16,7 @@ export default class Area extends React.Component {
         }}
         onClick={this.props.onPress}
       >
-        <div> </div>
+       
       </Button>
     );
   }
