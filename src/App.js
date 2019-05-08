@@ -10,17 +10,19 @@ import Area from './components/Area';
 
 function ListRender(props) {
   const data = props.data;
-  const listItems = data.map((poda, index) => <Area />);
-  
-  
+
+  const listItems = data.map((poda, index) => (
+    <Area onPress={() => props.onPress(index)} poda={poda} key={index} />
+  ));
+
   return (
     <div id="listContainer"
       style={{
         flexWrap: 'wrap',
-        
         display: 'flex',
-        margin: 'auto'
-        
+        justifyContent: 'space-between',
+        marginTop: 32
+
       }}
     >
       {listItems}
@@ -32,6 +34,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      inFocus: null,
       results: {}
     };
 
@@ -40,7 +43,6 @@ export default class App extends React.Component {
 
   async componentDidMount() {
     const resultado = await getPodas();
-    console.log(resultado);
     this.setState({ results: resultado });
     
     const container=  document.getElementById("listContainer");
@@ -94,10 +96,35 @@ export default class App extends React.Component {
           >
             <CardContent style={{ marginLeft: 32, marginRight: 32 }}>
               <ActionArea>
-                {/* <div sytle={{ display: 'flex', flex: 10 }}>lala</div> */}
+                {this.state.inFocus && (
+                  <div
+                    style={{
+                      flex: 10,
+                      display: 'flex',
+                      marginTop: 16
+                    }}
+                  >
+                    <StepLine
+                      step={
+                        this.state.results.data[this.state.inFocus - 1].step
+                      }
+                      cLevel={
+                        this.state.results.data[this.state.inFocus - 1].cLevel
+                      }
+                      status={
+                        this.state.results.data[this.state.inFocus - 1].status
+                      }
+                    />
+                  </div>
+                )}
               </ActionArea>
               {this.state.results.data ? (
-                <ListRender ref={this.listRenderRef}  data={this.state.results.data} />
+
+                <ListRender
+                  onPress={index => this.setState({ inFocus: index + 1 })}
+                  data={this.state.results.data}
+                />
+
               ) : null}
             </CardContent>
           </Card>

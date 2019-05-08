@@ -10,7 +10,7 @@ export default class StepsLine extends React.Component {
           flex: 1,
           display: 'flex',
           flexDirection: 'collumn',
-          margin: 34
+          justifyContent: 'center'
         }}
       >
         <StepBox
