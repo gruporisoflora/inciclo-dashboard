@@ -18,10 +18,10 @@ export default class StepsBox extends React.Component {
     return (
       <div
         style={{
-          width: 100,
-          height: 50,
-          marginLeft: 8,
-          marginRight: 8,
+          flex: 1,
+          height: 40,
+          marginLeft: 4,
+          marginRight: 4,
           backgroundColor: shouldIDisplay ? getColorByCLevel(cLevel) : 'grey',
           alignItems: 'center',
           justifyContent: 'center',
