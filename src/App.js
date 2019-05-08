@@ -11,13 +11,16 @@ import Area from './components/Area';
 function ListRender(props) {
   const data = props.data;
   const listItems = data.map((poda, index) => <Area />);
+  
+  
   return (
-    <div
+    <div id="listContainer"
       style={{
         flexWrap: 'wrap',
-        justifyContent: 'center',
-        marginLeft: 20,
-        display: 'space-between'
+        
+        display: 'flex',
+        margin: 'auto'
+        
       }}
     >
       {listItems}
@@ -31,15 +34,45 @@ export default class App extends React.Component {
     this.state = {
       results: {}
     };
+
+    
   }
 
   async componentDidMount() {
     const resultado = await getPodas();
     console.log(resultado);
     this.setState({ results: resultado });
+    
+    const container=  document.getElementById("listContainer");
+
+    
+    const podaItem = document.getElementsByClassName("podaItem")
+
+
+    let style = window.getComputedStyle(document.getElementsByClassName('podaItem')[0]);
+
+
+    const gridMargin = this.getMargin(container.offsetWidth,  80,16)
+
+    container.style.paddingLeft= gridMargin + "px"
+
+
   }
 
+  getMargin(containerWidth, itemWidth, margin){
+    
+    
+
+    
+    return (containerWidth %itemWidth) + margin/2
+  }
+
+
+  
   render() {
+
+    
+    
     return (
       <div className="App">
         <div
@@ -64,7 +97,7 @@ export default class App extends React.Component {
                 {/* <div sytle={{ display: 'flex', flex: 10 }}>lala</div> */}
               </ActionArea>
               {this.state.results.data ? (
-                <ListRender data={this.state.results.data} />
+                <ListRender ref={this.listRenderRef}  data={this.state.results.data} />
               ) : null}
             </CardContent>
           </Card>

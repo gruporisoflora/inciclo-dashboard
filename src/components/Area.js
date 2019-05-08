@@ -3,7 +3,7 @@ import React from 'react';
 export default class Area extends React.Component {
   render() {
     return (
-      <div
+      <div className="podaItem"
         style={{
           width: 80,
           height: 80,
