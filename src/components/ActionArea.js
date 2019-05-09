@@ -13,7 +13,7 @@ export default class ActionArea extends React.Component {
             fontWeight: '600'
           }}
         >
-          {this.props.areaName}
+          {this.props.areaName ? 'Área ' + this.props.areaName : null}
         </div>
         <div
           style={{

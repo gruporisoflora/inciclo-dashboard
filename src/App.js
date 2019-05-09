@@ -18,7 +18,7 @@ function ListRender(props) {
       style={{
         flexWrap: 'wrap',
         display: 'flex',
-        // justifyContent: 'space-between',
+        justifyContent: 'space-between',
         marginTop: 32
       }}
     >
@@ -62,7 +62,13 @@ export default class App extends React.Component {
             }}
           >
             <CardContent style={{ marginLeft: 32, marginRight: 32 }}>
-              <ActionArea>
+              <ActionArea
+                areaName={
+                  this.state.inFocus
+                    ? this.state.results.data[this.state.inFocus - 1].id
+                    : null
+                }
+              >
                 {this.state.inFocus && (
                   <div
                     style={{
