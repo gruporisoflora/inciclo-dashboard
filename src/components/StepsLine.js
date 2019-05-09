@@ -14,22 +14,26 @@ export default class StepsLine extends React.Component {
         }}
       >
         <StepBox
-          shouldIDisplay={step === 'GROWING'}
-          cLevel={cLevel}
-          status={status}
-        />
-        <StepBox
           shouldIDisplay={step === 'NEXT_TO_CABLE'}
+          stepName="Crescimento"
           cLevel={cLevel}
           status={status}
         />
         <StepBox
           shouldIDisplay={step === 'IN_INPECTION'}
+          stepName="Inspeção"
           cLevel={cLevel}
           status={status}
         />
         <StepBox
           shouldIDisplay={step === 'CHECKED_TO_CUT'}
+          stepName="Poda"
+          cLevel={cLevel}
+          status={status}
+        />
+        <StepBox
+          shouldIDisplay={step === 'GROWING'}
+          stepName="Status da Área"
           cLevel={cLevel}
           status={status}
         />

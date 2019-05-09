@@ -2,12 +2,12 @@ import React from 'react';
 
 export default class StepsBox extends React.Component {
   render() {
-    const { cLevel, status, shouldIDisplay } = this.props;
+    const { cLevel, status, shouldIDisplay, stepName } = this.props;
     const getColorByCLevel = cLevel => {
-      if (cLevel === 'LOW') return 'green';
-      if (cLevel === 'MEDIUM') return 'yellow';
-      if (cLevel === 'HIGH') return 'red';
-      return 'lime';
+      if (cLevel === 'LOW') return '#56C577';
+      if (cLevel === 'MEDIUM') return '#FF9C50';
+      if (cLevel === 'HIGH') return '#FF6060';
+      return '#56C577';
     };
     const getStatusText = status => {
       if (status === 'DELAYED') return 'ATRASADO';
@@ -19,18 +19,22 @@ export default class StepsBox extends React.Component {
       <div
         style={{
           flex: 1,
-          height: 40,
-          marginLeft: 4,
-          marginRight: 4,
+          height: 50,
+          marginLeft: '4px',
+          marginRight: '4px',
           backgroundColor: shouldIDisplay ? getColorByCLevel(cLevel) : 'grey',
           alignItems: 'center',
           justifyContent: 'center',
-          color: 'white',
-          fontSize: 14,
+          color: '#2A1725',
+          fontWeight: 'bold',
+          fontSize: '0.5em',
+          paddingLeft: '2px',
+          paddingRight: '2px',
           display: 'flex'
         }}
       >
-        {shouldIDisplay ? getStatusText(status) : null}
+        {stepName}
+        {/* {shouldIDisplay ? getStatusText(status) : null} */}
       </div>
     );
   }
