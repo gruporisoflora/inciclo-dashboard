@@ -18,7 +18,7 @@ function ListRender(props) {
       style={{
         flexWrap: 'wrap',
         display: 'flex',
-        justifyContent: 'space-between',
+        // justifyContent: 'space-between',
         marginTop: 32
       }}
     >
@@ -38,6 +38,7 @@ export default class App extends React.Component {
 
   async componentDidMount() {
     const resultado = await getPodas();
+    console.log('Resultado', resultado);
     this.setState({ results: resultado });
   }
 
@@ -53,9 +54,8 @@ export default class App extends React.Component {
           }}
         >
           <Card
+            className="App-card-wrapper"
             style={{
-              minWidth: 300,
-              maxWidth: 600,
               justifyContent: 'center',
               justifyItems: 'center',
               alignItens: 'center'

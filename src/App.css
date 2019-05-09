@@ -8,8 +8,15 @@
   pointer-events: none;
 }
 
-.App-area-wrapper {
-  margin: 0 auto 0 auto !important;
+.App-card-wrapper {
+  width: 580px;
+}
+
+@media only screen and (max-width: 580px) {
+  /* For mobile phones: */
+  .App-card-wrapper {
+    width: 100%;
+  }
 }
 
 .App-header {
