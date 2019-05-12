@@ -6,26 +6,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Artboard from './imgs/background.png';
 import ActionArea from './components/ActionArea';
-import Area from './components/Area';
+import ListView from './components/ListView'
 
-function ListRender(props) {
-  const data = props.data;
-  const listItems = data.map((poda, index) => (
-    <Area onPress={() => props.onPress(index)} poda={poda} key={index} />
-  ));
-  return (
-    <div
-      style={{
-        flexWrap: 'wrap',
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginTop: 32
-      }}
-    >
-      {listItems}
-    </div>
-  );
-}
 
 export default class App extends React.Component {
   constructor(props) {
@@ -40,7 +22,11 @@ export default class App extends React.Component {
     const resultado = await getPodas();
     console.log('Resultado', resultado);
     this.setState({ results: resultado });
+    
+    
   }
+  
+  
 
   render() {
     return (
@@ -92,7 +78,7 @@ export default class App extends React.Component {
                 )}
               </ActionArea>
               {this.state.results.data ? (
-                <ListRender
+                <ListView
                   onPress={index => this.setState({ inFocus: index + 1 })}
                   data={this.state.results.data}
                 />
