@@ -7,12 +7,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Artboard from './imgs/background.png';
 import ActionArea from './components/ActionArea';
 import Area from './components/Area';
+import Button from '@material-ui/core/Button';
 
 function ListRender(props) {
   const data = props.data;
-  const listItems = data.map((poda, index) => (
-    <Area onPress={() => props.onPress(index)} poda={poda} key={index} />
-  ));
+  const listItems = data.map((poda, index) => <Area onPress={() => props.onPress(index)} poda={poda} key={index} />);
   return (
     <div
       style={{
@@ -32,7 +31,8 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       inFocus: null,
-      results: {}
+      results: {},
+      tab: 0
     };
   }
 
@@ -45,60 +45,38 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div
-          className="App-header"
-          style={{
-            backgroundImage: `url(${Artboard})`,
-            backgroundSize: 'cover',
-            overflow: 'hidden'
-          }}
-        >
-          <Card
-            className="App-card-wrapper"
+        <div className="App-wrapper">
+          {/* header */}
+          <div
             style={{
-              justifyContent: 'center',
-              justifyItems: 'center',
-              alignItens: 'center'
+              display: 'flex',
+              flex: 28,
+              width: '100%',
+              flexDirection: 'column'
             }}
           >
-            <CardContent style={{ marginLeft: 32, marginRight: 32 }}>
-              <ActionArea
-                areaName={
-                  this.state.inFocus
-                    ? this.state.results.data[this.state.inFocus - 1].id
-                    : null
-                }
-              >
-                {this.state.inFocus && (
-                  <div
-                    style={{
-                      flex: 10,
-                      display: 'flex',
-                      marginTop: 16
-                    }}
-                  >
-                    <StepLine
-                      step={
-                        this.state.results.data[this.state.inFocus - 1].step
-                      }
-                      cLevel={
-                        this.state.results.data[this.state.inFocus - 1].cLevel
-                      }
-                      status={
-                        this.state.results.data[this.state.inFocus - 1].status
-                      }
-                    />
-                  </div>
-                )}
-              </ActionArea>
-              {this.state.results.data ? (
-                <ListRender
-                  onPress={index => this.setState({ inFocus: index + 1 })}
-                  data={this.state.results.data}
-                />
-              ) : null}
-            </CardContent>
-          </Card>
+            <div style={{ display: 'flex', marginTop: 40, justifyContent: 'center' }}>
+              <div style={{ display: 'flex', flex: 25 }} />
+              <div style={{ display: 'flex', flex: 15 }}>logo</div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', flex: 81 }}>
+                <Button onClick={() => this.setState({ tab: 0 })} style={{ fontSize: 16, textTransform: 'none' }}>
+                  Zonas monitoras
+                </Button>
+                <Button onClick={() => this.setState({ tab: 1 })} style={{ fontSize: 16, textTransform: 'none' }}>
+                  Agendamento
+                </Button>
+                <Button onClick={() => this.setState({ tab: 2 })} style={{ fontSize: 16, textTransform: 'none' }}>
+                  Configurações
+                </Button>
+              </div>
+              <div style={{ display: 'flex', flex: 34 }} />
+              <div>PAULA</div>
+              <div style={{ display: 'flex', flex: 25 }} />
+            </div>
+            <div style={{ display: 'flex', flex: 1, alignItems: 'flex-end' }}>header footer</div>
+          </div>
+          {/* Body */}
+          <div style={{ display: 'flex', flex: 72, width: '100%' }}>body</div>
         </div>
       </div>
     );
