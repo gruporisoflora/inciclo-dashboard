@@ -90,16 +90,19 @@ export default class Zones extends React.Component {
     return (
       <div style={{ display: 'flex', flex: 1 }}>
         <ZoneColumn
+          massiveScheduling
           podas={this.state.highPodas}
           cLevel={'HIGH'}
           containerStyle={{ flexDirection: 'column', display: 'flex', flex: 1 }}
         />
         <ZoneColumn
+          massiveScheduling
           podas={this.state.mediumPodas}
           cLevel={'MEDIUM'}
           containerStyle={{ flexDirection: 'column', display: 'flex', flex: 1, marginLeft: 65, marginRight: 65 }}
         />
         <ZoneColumn
+          massiveScheduling
           podas={this.state.lowPodas}
           cLevel={'LOW'}
           containerStyle={{ flexDirection: 'column', display: 'flex', flex: 1 }}

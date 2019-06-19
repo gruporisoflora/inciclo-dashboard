@@ -73,9 +73,11 @@ export default class Zones extends React.Component {
     const { data } = await getPodas();
     console.log('request data', data);
     const filteredData = data.filter(poda => poda.step !== 'NEXT_TO_CABLE');
+    console.log('filtered', filteredData);
     const lowPodas = filteredData.filter(poda => poda.cLevel === 'LOW');
     const mediumPodas = filteredData.filter(poda => poda.cLevel === 'MEDIUM');
     const highPodas = filteredData.filter(poda => poda.cLevel === 'HIGH');
+    console.log('Low podas', lowPodas);
     this.setState({ lowPodas, mediumPodas, highPodas });
   };
 
