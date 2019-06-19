@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/inciclo-dashboard/static/css/main.3550c778.chunk.css",
-    "main.js": "/inciclo-dashboard/static/js/main.0a4ccbbc.chunk.js",
-    "main.js.map": "/inciclo-dashboard/static/js/main.0a4ccbbc.chunk.js.map",
+    "main.css": "/inciclo-dashboard/static/css/main.9d6b4832.chunk.css",
+    "main.js": "/inciclo-dashboard/static/js/main.dd4f9a64.chunk.js",
+    "main.js.map": "/inciclo-dashboard/static/js/main.dd4f9a64.chunk.js.map",
     "runtime~main.js": "/inciclo-dashboard/static/js/runtime~main.12449edc.js",
     "runtime~main.js.map": "/inciclo-dashboard/static/js/runtime~main.12449edc.js.map",
     "static/js/2.6b20202c.chunk.js": "/inciclo-dashboard/static/js/2.6b20202c.chunk.js",
     "static/js/2.6b20202c.chunk.js.map": "/inciclo-dashboard/static/js/2.6b20202c.chunk.js.map",
     "index.html": "/inciclo-dashboard/index.html",
-    "precache-manifest.f90eaf67d92c586453e5e4a2e19af022.js": "/inciclo-dashboard/precache-manifest.f90eaf67d92c586453e5e4a2e19af022.js",
+    "precache-manifest.075d1ac749b8d2845221cb01d23c4e2e.js": "/inciclo-dashboard/precache-manifest.075d1ac749b8d2845221cb01d23c4e2e.js",
     "service-worker.js": "/inciclo-dashboard/service-worker.js",
-    "static/css/main.3550c778.chunk.css.map": "/inciclo-dashboard/static/css/main.3550c778.chunk.css.map"
+    "static/css/main.9d6b4832.chunk.css.map": "/inciclo-dashboard/static/css/main.9d6b4832.chunk.css.map"
   }
 }
