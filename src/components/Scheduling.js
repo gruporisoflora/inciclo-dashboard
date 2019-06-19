@@ -4,6 +4,13 @@ import getPodas from '../remote/axios';
 
 const mockedData = [
   {
+    id: 0,
+    posts: [{ id: 0 }],
+    step: 'GROWING',
+    status: 'DONE',
+    cLevel: 'LOW'
+  },
+  {
     id: 1,
     posts: [{ id: 1 }],
     step: 'NEXT_TO_CABLE',
@@ -20,36 +27,36 @@ const mockedData = [
   {
     id: 3,
     posts: [{ id: 3 }],
-    step: 'CHECKED_TO_CUT',
+    step: 'IN_INPECTION',
     status: 'SCHEDULED',
     cLevel: 'MEDIUM'
   },
   {
     id: 4,
     posts: [{ id: 4 }],
-    step: 'CHECKED_TO_CUT',
+    step: 'IN_INPECTION',
     status: 'SCHEDULED',
     cLevel: 'HIGH'
   },
   {
     id: 5,
     posts: [{ id: 4 }],
-    step: 'CHECKED_TO_CUT',
-    status: 'DELAYED',
+    step: 'IN_INPECTION',
+    status: 'SCHEDULED',
     cLevel: 'HIGH'
   },
   {
     id: 6,
     posts: [{ id: 4 }],
-    step: 'CHECKED_TO_CUT',
+    step: 'IN_INPECTION',
     status: 'SCHEDULED',
     cLevel: 'HIGH'
   },
   {
     id: 7,
     posts: [{ id: 4 }],
-    step: 'CHECKED_TO_CUT',
-    status: 'IN_PROCESS',
+    step: 'IN_INPECTION',
+    status: 'SCHEDULED',
     cLevel: 'HIGH'
   }
 ];
@@ -72,7 +79,7 @@ export default class Zones extends React.Component {
   _callRemote = async () => {
     const { data } = await getPodas();
     console.log('request data', data);
-    const filteredData = data.filter(poda => poda.step !== 'NEXT_TO_CABLE');
+    const filteredData = data.filter(poda => poda.step === 'NEXT_TO_CABLE');
     const lowPodas = filteredData.filter(poda => poda.cLevel === 'LOW');
     const mediumPodas = filteredData.filter(poda => poda.cLevel === 'MEDIUM');
     const highPodas = filteredData.filter(poda => poda.cLevel === 'HIGH');

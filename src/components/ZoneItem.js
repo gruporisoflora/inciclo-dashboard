@@ -45,11 +45,11 @@ const ArvoresStep = props => (
       </Button>
       <img style={{ marginLeft: 20, marginRight: 20 }} src={seta} alt="Seta" />
       <Button
-        disabled={!props.active || !(props.zone.step === 'NEXT_TO_CABLE' && props.zone.status !== 'HIGH')}
+        disabled={!props.active || !(props.zone.step === 'NEXT_TO_CABLE' && props.zone.cLevel !== 'HIGH')}
         style={{
           border: '1px solid',
           borderColor:
-            props.zone.step === 'NEXT_TO_CABLE' && props.zone.status !== 'HIGH'
+            props.zone.step === 'NEXT_TO_CABLE' && props.zone.cLevel !== 'HIGH'
               ? getColorByCLevel(props.zone.cLevel)
               : 'transparent',
           textTransform: 'none',
@@ -62,11 +62,11 @@ const ArvoresStep = props => (
       </Button>
       <img style={{ marginLeft: 20, marginRight: 20 }} src={seta} alt="Seta" />
       <Button
-        disabled={!props.active || !(props.zone.step === 'NEXT_TO_CABLE' && props.zone.status === 'HIGH')}
+        disabled={!props.active || !(props.zone.step === 'NEXT_TO_CABLE' && props.zone.cLevel === 'HIGH')}
         style={{
           border: '1px solid',
           borderColor:
-            props.zone.step === 'NEXT_TO_CABLE' && props.zone.status === 'HIGH'
+            props.zone.step === 'NEXT_TO_CABLE' && props.zone.cLevel === 'HIGH'
               ? getColorByCLevel(props.zone.cLevel)
               : 'transparent',
           textTransform: 'none',
@@ -83,7 +83,6 @@ const ArvoresStep = props => (
 
 const InspecaoAndPodaStep = props => (
   <div style={{ marginTop: 10, marginBottom: 8, opacity: props.active ? 1 : 0.4 }}>
-    {console.log('my props here', props)}
     <h3 style={{ marginBottom: 4, color: '#707070', fontWeight: '700' }}>
       {props.type === 'IN_INPECTION' ? 'Inspeção' : 'Poda'}
     </h3>
@@ -235,7 +234,7 @@ export default class ZoneItem extends React.Component {
             <div style={{ marginLeft: 50, marginRight: 50 }}>
               <div>
                 <ArvoresStep zone={zone} active={zone.step === 'GROWING' || zone.step === 'NEXT_TO_CABLE'} />
-                <InspecaoAndPodaStep zone={zone} type={'IN_INPECTION'} active={zone.step === 'IN_INPECTION'} />
+                {/* <InspecaoAndPodaStep zone={zone} type={'IN_INPECTION'} active={zone.step === 'IN_INPECTION'} /> */}
                 <InspecaoAndPodaStep zone={zone} type={'CHECKED_TO_CUT'} active={zone.step === 'CHECKED_TO_CUT'} />
               </div>
             </div>
