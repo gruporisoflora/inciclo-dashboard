@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f25af40ab194eb849b2267688be3c1ad",
+    "revision": "657069edfaad8ec1ce550463d9062f8f",
     "url": "/inciclo-dashboard/index.html"
   },
   {
-    "revision": "f9377bdd5e058679cec0",
+    "revision": "f1c6f37890c61a7b8ad6",
     "url": "/inciclo-dashboard/static/css/main.a2b35253.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/inciclo-dashboard/static/js/2.90798a68.chunk.js"
   },
   {
-    "revision": "f9377bdd5e058679cec0",
-    "url": "/inciclo-dashboard/static/js/main.f3020a1d.chunk.js"
+    "revision": "f1c6f37890c61a7b8ad6",
+    "url": "/inciclo-dashboard/static/js/main.719620e1.chunk.js"
   },
   {
     "revision": "056607ff4413479a90dd",
