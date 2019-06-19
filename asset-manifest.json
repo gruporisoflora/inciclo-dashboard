@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/inciclo-dashboard/static/css/main.0ac34472.chunk.css",
-    "main.js": "/inciclo-dashboard/static/js/main.a56efbab.chunk.js",
-    "main.js.map": "/inciclo-dashboard/static/js/main.a56efbab.chunk.js.map",
-    "runtime~main.js": "/inciclo-dashboard/static/js/runtime~main.12449edc.js",
-    "runtime~main.js.map": "/inciclo-dashboard/static/js/runtime~main.12449edc.js.map",
-    "static/js/2.024f283b.chunk.js": "/inciclo-dashboard/static/js/2.024f283b.chunk.js",
-    "static/js/2.024f283b.chunk.js.map": "/inciclo-dashboard/static/js/2.024f283b.chunk.js.map",
-    "index.html": "/inciclo-dashboard/index.html",
-    "precache-manifest.c499838ecaabf9178b482c59c3333db3.js": "/inciclo-dashboard/precache-manifest.c499838ecaabf9178b482c59c3333db3.js",
-    "service-worker.js": "/inciclo-dashboard/service-worker.js",
-    "static/css/main.0ac34472.chunk.css.map": "/inciclo-dashboard/static/css/main.0ac34472.chunk.css.map",
-    "static/media/background.png": "/inciclo-dashboard/static/media/background.4db2b979.png"
+    "main.css": "/static/css/main.3550c778.chunk.css",
+    "main.js": "/static/js/main.8593ec6c.chunk.js",
+    "main.js.map": "/static/js/main.8593ec6c.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.6b20202c.chunk.js": "/static/js/2.6b20202c.chunk.js",
+    "static/js/2.6b20202c.chunk.js.map": "/static/js/2.6b20202c.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.38ea4a04427cef67d2114cee177520e8.js": "/precache-manifest.38ea4a04427cef67d2114cee177520e8.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.3550c778.chunk.css.map": "/static/css/main.3550c778.chunk.css.map"
   }
 }
