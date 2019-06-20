@@ -1,6 +1,6 @@
 import React from 'react';
 import ZoneColumn from './ZoneColumn';
-import getPodas from '../remote/axios';
+import { getPodas } from '../remote/axios';
 
 const mockedData = [
   {
@@ -66,17 +66,22 @@ export default class Zones extends React.Component {
 
   async componentDidMount() {
     this._callRemote();
-    setInterval(this._callRemote, 3000);
+    const intervalId = setInterval(this._callRemote, 3000);
+    this.setState({ intervalId: intervalId });
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId);
   }
 
   _callRemote = async () => {
     const { data } = await getPodas();
     console.log('request data', data);
-    const filteredData = data.filter(poda => poda.step !== 'NEXT_TO_CABLE');
+    const filteredData = data && data.filter(poda => poda.step !== 'NEXT_TO_CABLE');
     console.log('filtered', filteredData);
-    const lowPodas = filteredData.filter(poda => poda.cLevel === 'LOW');
-    const mediumPodas = filteredData.filter(poda => poda.cLevel === 'MEDIUM');
-    const highPodas = filteredData.filter(poda => poda.cLevel === 'HIGH');
+    const lowPodas = filteredData && filteredData.filter(poda => poda.cLevel === 'LOW');
+    const mediumPodas = filteredData && filteredData.filter(poda => poda.cLevel === 'MEDIUM');
+    const highPodas = filteredData && filteredData.filter(poda => poda.cLevel === 'HIGH');
     console.log('Low podas', lowPodas);
     this.setState({ lowPodas, mediumPodas, highPodas });
   };

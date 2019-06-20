@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import getPodas from './remote/axios';
+import { getPodas } from './remote/axios';
 import AppHeader from './components/AppHeader';
 import Area from './components/Area';
 import Zones from './components/Zones';

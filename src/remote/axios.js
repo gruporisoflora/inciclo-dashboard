@@ -3,13 +3,21 @@ import axios from 'axios';
 const ngrokUrl = 'http://a171cce4.ngrok.io';
 const baseUrl = 'http://inciclo.us-east-2.elasticbeanstalk.com';
 
-async function getPodas() {
+export async function getPodas() {
   try {
-    const response = await axios.get(baseUrl + '/podas', { headers: { mode: 'cors' } });
+    const response = await axios.get(ngrokUrl + '/podas', { headers: { mode: 'cors' } });
     return response;
   } catch (error) {
     return error;
   }
 }
 
-export default getPodas;
+export async function schedulePoda(podaId) {
+  try {
+    const response = await axios.put(ngrokUrl + '/podas/scheduling/?id=' + podaId, { scheduleType: 'PODA' });
+    return response;
+  } catch (error) {
+    console.log('schedule error', error);
+    return error;
+  }
+}

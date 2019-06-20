@@ -2,6 +2,7 @@ import React from 'react';
 import ZoneItem from './ZoneItem';
 import { Button } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
+import { schedulePoda } from '../remote/axios';
 
 function ListRender(podas) {
   const listItems = podas.map((poda, index) => <ZoneItem key={poda.id} zone={poda} />);
@@ -13,6 +14,13 @@ export default class ZoneColumn extends React.Component {
     super(props);
     this.state = { openModal: false };
   }
+
+  _shedulePodas = async () => {
+    const { podas } = this.props;
+    await Promise.all(podas.map(poda => schedulePoda(poda.id)));
+    this.setState({ openModal: false });
+    this.props.scheduleComplete();
+  };
 
   render() {
     const { containerStyle, cLevel, podas, massiveScheduling } = this.props;
@@ -70,10 +78,16 @@ export default class ZoneColumn extends React.Component {
                       justifyContent: 'space-around'
                     }}
                   >
-                    <Button style={{ padding: 20, borderRadius: 10, border: '1px solid #707070' }}>
+                    <Button
+                      onClick={() => this._shedulePodas()}
+                      style={{ padding: 20, borderRadius: 10, border: '1px solid #707070' }}
+                    >
                       <h1 style={{ color: '#707070', marginLeft: 16, marginRight: 16, fontWeight: 'bold' }}>Sim</h1>
                     </Button>
-                    <Button style={{ padding: 20, borderRadius: 10, border: '1px solid #707070' }}>
+                    <Button
+                      onClick={() => this.setState({ openModal: false })}
+                      style={{ padding: 20, borderRadius: 10, border: '1px solid #707070' }}
+                    >
                       <h1 style={{ color: '#707070', marginLeft: 16, marginRight: 16, fontWeight: 'bold' }}>Não</h1>
                     </Button>
                   </div>
