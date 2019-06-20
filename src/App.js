@@ -1,104 +1,47 @@
 import React from 'react';
 import './App.css';
-import getPodas from './remote/axios';
-import StepLine from './components/StepsLine';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Artboard from './imgs/background.png';
-import ActionArea from './components/ActionArea';
+import { getPodas } from './remote/axios';
+import AppHeader from './components/AppHeader';
 import Area from './components/Area';
-
-function ListRender(props) {
-  const data = props.data;
-  const listItems = data.map((poda, index) => (
-    <Area onPress={() => props.onPress(index)} poda={poda} key={index} />
-  ));
-  return (
-    <div
-      style={{
-        flexWrap: 'wrap',
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginTop: 32
-      }}
-    >
-      {listItems}
-    </div>
-  );
-}
+import Zones from './components/Zones';
+import Scheduling from './components/Scheduling';
+import MapView from './components/MapView/MapView'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       inFocus: null,
-      results: {}
+      tab: 0,
+      width: '100vh',
+      height: '100vh'
     };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
-  async componentDidMount() {
-    const resultado = await getPodas();
-    console.log('Resultado', resultado);
-    this.setState({ results: resultado });
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   render() {
     return (
-      <div className="App">
-        <div
-          className="App-header"
-          style={{
-            backgroundImage: `url(${Artboard})`,
-            backgroundSize: 'cover',
-            overflow: 'hidden'
-          }}
-        >
-          <Card
-            className="App-card-wrapper"
-            style={{
-              justifyContent: 'center',
-              justifyItems: 'center',
-              alignItens: 'center'
-            }}
-          >
-            <CardContent style={{ marginLeft: 32, marginRight: 32 }}>
-              <ActionArea
-                areaName={
-                  this.state.inFocus
-                    ? this.state.results.data[this.state.inFocus - 1].id
-                    : null
-                }
-              >
-                {this.state.inFocus && (
-                  <div
-                    style={{
-                      flex: 10,
-                      display: 'flex',
-                      marginTop: 16
-                    }}
-                  >
-                    <StepLine
-                      step={
-                        this.state.results.data[this.state.inFocus - 1].step
-                      }
-                      cLevel={
-                        this.state.results.data[this.state.inFocus - 1].cLevel
-                      }
-                      status={
-                        this.state.results.data[this.state.inFocus - 1].status
-                      }
-                    />
-                  </div>
-                )}
-              </ActionArea>
-              {this.state.results.data ? (
-                <ListRender
-                  onPress={index => this.setState({ inFocus: index + 1 })}
-                  data={this.state.results.data}
-                />
-              ) : null}
-            </CardContent>
-          </Card>
+      <div className="App" style={{ width: this.state.width, height: this.state.height }}>
+        <AppHeader tab={this.state.tab} onChangeTab={tab => this.setState({ tab })} />
+        <div className="bodyWrapper" style={{ backgroundColor: '#F5F5F5' }}>
+          <div className="contentWrapper" style={{ width: '80%', height: '100%', margin: ' 0 auto 0 auto' }}>
+            {this.state.tab === 0 && <Zones />}
+            {this.state.tab === 1 && <Scheduling />}
+            {this.state.tab === 2 && <MapView/>}
+          </div>
         </div>
       </div>
     );
