@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ngrokUrl = 'http://a171cce4.ngrok.io';
+const ngrokUrl = 'http://150d9738.ngrok.io';
 const baseUrl = 'http://inciclo.us-east-2.elasticbeanstalk.com';
 
 export async function getPodas() {

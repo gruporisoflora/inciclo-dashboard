@@ -3,6 +3,7 @@ import ZoneItem from './ZoneItem';
 import { Button } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import { schedulePoda } from '../remote/axios';
+import MoonLoader from 'react-spinners/MoonLoader';
 
 function ListRender(podas) {
   const listItems = podas.map((poda, index) => <ZoneItem key={poda.id} zone={poda} />);
@@ -12,13 +13,14 @@ function ListRender(podas) {
 export default class ZoneColumn extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { openModal: false };
+    this.state = { openModal: false, loading: false };
   }
 
   _shedulePodas = async () => {
+    this.setState({ loading: true });
     const { podas } = this.props;
     await Promise.all(podas.map(poda => schedulePoda(poda.id)));
-    this.setState({ openModal: false });
+    this.setState({ openModal: false, loading: false });
     this.props.scheduleComplete();
   };
 
@@ -78,18 +80,27 @@ export default class ZoneColumn extends React.Component {
                       justifyContent: 'space-around'
                     }}
                   >
-                    <Button
-                      onClick={() => this._shedulePodas()}
-                      style={{ padding: 20, borderRadius: 10, border: '1px solid #707070' }}
-                    >
-                      <h1 style={{ color: '#707070', marginLeft: 16, marginRight: 16, fontWeight: 'bold' }}>Sim</h1>
-                    </Button>
-                    <Button
-                      onClick={() => this.setState({ openModal: false })}
-                      style={{ padding: 20, borderRadius: 10, border: '1px solid #707070' }}
-                    >
-                      <h1 style={{ color: '#707070', marginLeft: 16, marginRight: 16, fontWeight: 'bold' }}>Não</h1>
-                    </Button>
+                    {!this.state.loading && (
+                      <Button
+                        onClick={() => this._shedulePodas()}
+                        style={{ padding: 20, borderRadius: 10, border: '1px solid #707070' }}
+                      >
+                        <h1 style={{ color: '#707070', marginLeft: 16, marginRight: 16, fontWeight: 'bold' }}>Sim</h1>
+                      </Button>
+                    )}
+                    {!this.state.loading && (
+                      <Button
+                        onClick={() => this.setState({ openModal: false })}
+                        style={{ padding: 20, borderRadius: 10, border: '1px solid #707070' }}
+                      >
+                        <h1 style={{ color: '#707070', marginLeft: 16, marginRight: 16, fontWeight: 'bold' }}>Não</h1>
+                      </Button>
+                    )}
+                    {this.state.loading && (
+                      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 100 }}>
+                        <MoonLoader sizeUnit={'px'} size={150} color={'#56C577'} loading={this.state.loading} />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

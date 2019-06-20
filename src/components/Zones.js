@@ -1,58 +1,59 @@
 import React from 'react';
 import ZoneColumn from './ZoneColumn';
 import { getPodas } from '../remote/axios';
+import MoonLoader from 'react-spinners/MoonLoader';
 
-const mockedData = [
-  {
-    id: 1,
-    posts: [{ id: 1 }],
-    step: 'NEXT_TO_CABLE',
-    status: 'DONE',
-    cLevel: 'LOW'
-  },
-  {
-    id: 2,
-    posts: [{ id: 2 }],
-    step: 'NEXT_TO_CABLE',
-    status: 'DONE',
-    cLevel: 'HIGH'
-  },
-  {
-    id: 3,
-    posts: [{ id: 3 }],
-    step: 'CHECKED_TO_CUT',
-    status: 'SCHEDULED',
-    cLevel: 'MEDIUM'
-  },
-  {
-    id: 4,
-    posts: [{ id: 4 }],
-    step: 'CHECKED_TO_CUT',
-    status: 'SCHEDULED',
-    cLevel: 'HIGH'
-  },
-  {
-    id: 5,
-    posts: [{ id: 4 }],
-    step: 'CHECKED_TO_CUT',
-    status: 'DELAYED',
-    cLevel: 'HIGH'
-  },
-  {
-    id: 6,
-    posts: [{ id: 4 }],
-    step: 'CHECKED_TO_CUT',
-    status: 'SCHEDULED',
-    cLevel: 'HIGH'
-  },
-  {
-    id: 7,
-    posts: [{ id: 4 }],
-    step: 'CHECKED_TO_CUT',
-    status: 'IN_PROCESS',
-    cLevel: 'HIGH'
-  }
-];
+// const mockedData = [
+//   {
+//     id: 1,
+//     posts: [{ id: 1 }],
+//     step: 'NEXT_TO_CABLE',
+//     status: 'DONE',
+//     cLevel: 'LOW'
+//   },
+//   {
+//     id: 2,
+//     posts: [{ id: 2 }],
+//     step: 'NEXT_TO_CABLE',
+//     status: 'DONE',
+//     cLevel: 'HIGH'
+//   },
+//   {
+//     id: 3,
+//     posts: [{ id: 3 }],
+//     step: 'CHECKED_TO_CUT',
+//     status: 'SCHEDULED',
+//     cLevel: 'MEDIUM'
+//   },
+//   {
+//     id: 4,
+//     posts: [{ id: 4 }],
+//     step: 'CHECKED_TO_CUT',
+//     status: 'SCHEDULED',
+//     cLevel: 'HIGH'
+//   },
+//   {
+//     id: 5,
+//     posts: [{ id: 4 }],
+//     step: 'CHECKED_TO_CUT',
+//     status: 'DELAYED',
+//     cLevel: 'HIGH'
+//   },
+//   {
+//     id: 6,
+//     posts: [{ id: 4 }],
+//     step: 'CHECKED_TO_CUT',
+//     status: 'SCHEDULED',
+//     cLevel: 'HIGH'
+//   },
+//   {
+//     id: 7,
+//     posts: [{ id: 4 }],
+//     step: 'CHECKED_TO_CUT',
+//     status: 'IN_PROCESS',
+//     cLevel: 'HIGH'
+//   }
+// ];
 
 export default class Zones extends React.Component {
   constructor(props) {
@@ -60,14 +61,15 @@ export default class Zones extends React.Component {
     this.state = {
       lowPodas: null,
       mediumPodas: null,
-      highPodas: null
+      highPodas: null,
+      loading: true
     };
   }
 
   async componentDidMount() {
-    this._callRemote();
+    await this._callRemote();
     const intervalId = setInterval(this._callRemote, 3000);
-    this.setState({ intervalId: intervalId });
+    this.setState({ intervalId: intervalId, loading: false });
   }
 
   componentWillUnmount() {
@@ -88,22 +90,29 @@ export default class Zones extends React.Component {
 
   render() {
     return (
-      <div style={{ display: 'flex', flex: 1 }}>
-        <ZoneColumn
-          podas={this.state.highPodas}
-          cLevel={'HIGH'}
-          containerStyle={{ flexDirection: 'column', display: 'flex', flex: 1 }}
-        />
-        <ZoneColumn
-          podas={this.state.mediumPodas}
-          cLevel={'MEDIUM'}
-          containerStyle={{ flexDirection: 'column', display: 'flex', flex: 1, marginLeft: 65, marginRight: 65 }}
-        />
-        <ZoneColumn
-          podas={this.state.lowPodas}
-          cLevel={'LOW'}
-          containerStyle={{ flexDirection: 'column', display: 'flex', flex: 1 }}
-        />
+      <div>
+        <div style={{ display: 'flex', flex: 1 }}>
+          <ZoneColumn
+            podas={this.state.highPodas}
+            cLevel={'HIGH'}
+            containerStyle={{ flexDirection: 'column', display: 'flex', flex: 1 }}
+          />
+          <ZoneColumn
+            podas={this.state.mediumPodas}
+            cLevel={'MEDIUM'}
+            containerStyle={{ flexDirection: 'column', display: 'flex', flex: 1, marginLeft: 65, marginRight: 65 }}
+          />
+          <ZoneColumn
+            podas={this.state.lowPodas}
+            cLevel={'LOW'}
+            containerStyle={{ flexDirection: 'column', display: 'flex', flex: 1 }}
+          />
+        </div>
+        {this.state.loading && (
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 200 }}>
+            <MoonLoader sizeUnit={'px'} size={150} color={'#56C577'} loading={this.state.loading} />
+          </div>
+        )}
       </div>
     );
   }
