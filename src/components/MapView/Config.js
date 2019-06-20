@@ -1,11 +1,11 @@
 const dev = {
-    API_URL:"localhost:8080"
-}
+  API_URL: '150d9738.ngrok.io'
+};
 
 const prod = {
-    API_URL:"inciclo.us-east-2.elasticbeanstalk.com"
-}
+  API_URL: 'inciclo.us-east-2.elasticbeanstalk.com'
+};
 
-const Config = process.env.APP_STAGE == "prod"? prod:dev
+const Config = process.env.APP_STAGE == 'prod' ? prod : dev;
 
-export default Config
+export default Config;
