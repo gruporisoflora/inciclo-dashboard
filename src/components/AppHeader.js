@@ -6,6 +6,7 @@ import logo from '../imgs/icon.png';
 const getFooterTitle = tab => {
   if (tab === 0) return 'Zonas de monitoramento';
   if (tab === 1) return 'Agendamento de podas';
+  if (tab === 2) return 'Postes';
 };
 
 const getFooterSubtitle = tab => {
@@ -61,7 +62,7 @@ const AppHeader = props => (
                 opacity: props.tab === 2 ? 1 : 0.35
               }}
             >
-              <h3>Configurações</h3>
+              <h3>Postes</h3>
             </Button>
           </li>
 
