@@ -5,6 +5,7 @@ import AppHeader from './components/AppHeader';
 import Area from './components/Area';
 import Zones from './components/Zones';
 import Scheduling from './components/Scheduling';
+import MapView from './components/MapView/MapView'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -39,6 +40,7 @@ export default class App extends React.Component {
           <div className="contentWrapper" style={{ width: '80%', height: '100%', margin: ' 0 auto 0 auto' }}>
             {this.state.tab === 0 && <Zones />}
             {this.state.tab === 1 && <Scheduling />}
+            {this.state.tab === 2 && <MapView/>}
           </div>
         </div>
       </div>
