@@ -1,5 +1,5 @@
 const dev = {
-  API_URL: '150d9738.ngrok.io'
+  API_URL: 'inciclo.us-east-2.elasticbeanstalk.com'
 };
 
 const prod = {
