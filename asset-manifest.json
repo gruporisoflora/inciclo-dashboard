@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/inciclo-dashboard/static/css/main.b9f73580.chunk.css",
-    "main.js": "/inciclo-dashboard/static/js/main.bfccb5eb.chunk.js",
-    "main.js.map": "/inciclo-dashboard/static/js/main.bfccb5eb.chunk.js.map",
+    "main.js": "/inciclo-dashboard/static/js/main.3a0759a6.chunk.js",
+    "main.js.map": "/inciclo-dashboard/static/js/main.3a0759a6.chunk.js.map",
     "runtime~main.js": "/inciclo-dashboard/static/js/runtime~main.12449edc.js",
     "runtime~main.js.map": "/inciclo-dashboard/static/js/runtime~main.12449edc.js.map",
     "static/js/2.d417d8f1.chunk.js": "/inciclo-dashboard/static/js/2.d417d8f1.chunk.js",
     "static/js/2.d417d8f1.chunk.js.map": "/inciclo-dashboard/static/js/2.d417d8f1.chunk.js.map",
     "index.html": "/inciclo-dashboard/index.html",
-    "precache-manifest.8526d261b38cfadabf4f865e9be40176.js": "/inciclo-dashboard/precache-manifest.8526d261b38cfadabf4f865e9be40176.js",
+    "precache-manifest.93d4078cc5112b48380a6b282efcaa9e.js": "/inciclo-dashboard/precache-manifest.93d4078cc5112b48380a6b282efcaa9e.js",
     "service-worker.js": "/inciclo-dashboard/service-worker.js",
     "static/css/main.b9f73580.chunk.css.map": "/inciclo-dashboard/static/css/main.b9f73580.chunk.css.map"
   }
